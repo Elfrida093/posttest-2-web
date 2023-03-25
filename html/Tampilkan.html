@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tampil Data</title>
+        <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <h1>DATA REGISTRAR</h1>
+	<section>
+		<table>
+			<thead>
+				<tr>
+					<th>Nama</th>
+					<th>Email</th>
+					<th>Jenis Kelamin</th>
+					<th>Position</th>
+					<th>Alamat</th>
+			</thead>
+			<tbody id="data-body">
+				
+			</tbody>
+		</table>
+	</section>
+
+	<script>
+		var data = JSON.parse(sessionStorage.getItem('data')) || [];
+
+		var dataBody = document.getElementById('data-body');
+		for (var i = 0; i < data.length; i++) {
+			var tr = document.createElement('tr');
+			tr.innerHTML = '<td>' + data[i]['Nama'] + '</td>' +
+						'<td>' + data[i]['Email'] + '</td>' +
+						'<td>' + data[i]['Jenis Kelamin'] + '</td>' +
+						'<td>' + data[i]['Favorit'].join(', ') + '</td>'+
+						'<td>' + data[i]['Alamat'] + '</td>';
+			dataBody.appendChild(tr);
+		}  
+    </script> 
+</body>
+</html>
